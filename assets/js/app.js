@@ -1,4 +1,8 @@
 $(function(){
+    $("[data-toggle='sidebar']").on("click", function () {
+        $('.page-wrapper').toggleClass('sidebar-active');
+    })
+
     $.validator.setDefaults({
         errorElement: 'label',
         errorPlacement: function (error, element) {
@@ -11,7 +15,7 @@ $(function(){
         unhighlight: function (element, errorClass, validClass) {
             $(element).removeClass('is-invalid');
         }
-    });
+    })
 
     if($('.my-validate').length){
         $('.my-validate').validate()
