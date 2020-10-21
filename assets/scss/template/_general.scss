@@ -6,7 +6,7 @@
 
     &.sidebar-active{
         .page-navbar .navbar-sidebar-header{
-            width: $sidebar-active-width + 1px;
+            width: calc(250px + 1px);
 
             .sidebar-brand{
                 width: auto;
@@ -127,9 +127,9 @@
     .page-sidebar{
         position: fixed;
         top: $navbar-height;
-        left: -$sidebar-active-width;
+        left: -250px;
         bottom: 0;
-        width: $sidebar-active-width;
+        width: 250px;
         padding: $navbar-padding-x;
         z-index: $zindex-fixed - 1;
         background-color: $white;
@@ -137,14 +137,12 @@
         overflow-y: auto;
         transition: all .5s;
 
-        &::-webkit-scrollbar
-        {
+        &::-webkit-scrollbar{
             background-color: $white;
             width: 5px;
         }
         
-        &::-webkit-scrollbar-thumb
-        {
+        &::-webkit-scrollbar-thumb{
             border-radius: 2.5px;
             background-color: darken($white, 5%);
         }
@@ -176,6 +174,7 @@
                         display: inline-block;
                         width: 30px;
                         font-size: 24px;
+                        text-align: center;
                     }
                 }
             }
@@ -183,8 +182,60 @@
     }
 
     .page-content{
-        margin-left: 80px;
+        margin-left: 70px;
         position: relative;
         flex-grow: 1;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .page-wrapper{
+        &.sidebar-active{
+            .page-sidebar{
+                padding: $navbar-padding-x;
+                left: 0 !important;
+
+                &::-webkit-scrollbar{
+                    width: 5px;
+                }
+    
+                .sidebar-item{
+                    justify-content: space-between !important;
+                    .sidebar-link{
+                        width: 70px !important;
+                        justify-content: flex-start;
+                        .sidebar-icon {
+                            width: 100% !important;
+                        }
+                        .sidebar-title{
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+
+        .page-sidebar{
+            padding: $navbar-padding-x 0;
+            left: calc(-250px + 70px) !important;
+
+            &::-webkit-scrollbar{
+                width: 0;
+            }
+
+            .sidebar-item{
+                justify-content: flex-end !important;
+                .sidebar-link{
+                    width: 70px !important;
+                    justify-content: center;
+                    .sidebar-icon {
+                        width: 100% !important;
+                    }
+                    .sidebar-title{
+                        display: none;
+                    }
+                }
+            }
+        }
     }
 }
