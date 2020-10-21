@@ -1,0 +1,16 @@
+.form-group-default{
+    .form-control{
+        box-shadow: none;
+        &:focus,
+        &:invalid:focus,
+        &.is-invalid:focus,
+        &.was-validated{
+            box-shadow: none;
+        }
+    }
+}
+
+label.error{
+    color: $danger;
+    font-size: 12px;
+}
